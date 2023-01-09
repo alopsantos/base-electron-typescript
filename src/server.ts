@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { engine } from "express-handlebars";
 import { routes } from "./routes";
 
@@ -11,7 +12,7 @@ app.engine(
   engine({ extname: ".handlebars", defaultLayout: "main" })
 );
 app.set("view engine", "handlebars");
-app.set("views", "./src/views");
+app.set("views", "/views");
 app.use(express.static(__dirname + "/public"));
 
 app.use(
@@ -19,9 +20,10 @@ app.use(
     extended: true,
   })
 );
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
+
 app.use("/", routes);
 app.listen(3333, () => {
   console.log("Servidor ok");

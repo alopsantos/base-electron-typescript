@@ -14,7 +14,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadURL("http://localhost:3333/");
+  mainWindow.loadURL("http://localhost:3333");
 }
 
 app.on("ready", () => {
